@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to blog_post_url(id: @comment.blog_post_id), notice: "Comment was created"}
+        format.html {redirect_to blog_post_url(id: @comment.blog_post_id), notice: "Comment was created"}
       else
-        format.html { redirect_back(fallback_location: root_path, notice: "Failed to post")}
+        format.html {redirect_back(fallback_location: root_path, notice: "Failed to post")}
       end
     end
   end
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:author, :comment_entry, :blog_post_id)
+    params.require(:comment).permit(:user_id, :comment_entry, :blog_post_id)
   end
 
   def set_comment
